@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class Entity : MonoBehaviour
-{
+public abstract class Projectile : MonoBehaviour {
 
     public Vector2 speed;
     public Vector2 acceleration;
@@ -33,11 +32,11 @@ public abstract class Entity : MonoBehaviour
     }
 
     // Update is called once per frame
- 
+
 
     public void FixedUpdate()
     {
-        
+
         EntityInput();
         HorizontalMovement();
         VerticalMovement();
@@ -97,8 +96,9 @@ public abstract class Entity : MonoBehaviour
         if (Mathf.Abs(acceleration.x) > 0 || Mathf.Abs(speed.x) > .03f)
         {
             speed.x += acceleration.x * Time.fixedDeltaTime;
-            speed.x *= groundDrag;
-            x = x + speed.x * Time.fixedDeltaTime * moveForce;
+            if(grounded)
+                speed.x *= groundDrag;
+            x = x + speed.x * Time.fixedDeltaTime ;
             transform.position = new Vector2(x, transform.position.y);
 
         }
@@ -165,7 +165,7 @@ public abstract class Entity : MonoBehaviour
             grounded = false;
         }
 
-        
+
 
 
 
@@ -217,5 +217,4 @@ public abstract class Entity : MonoBehaviour
         transform.position = new Vector3(wallX, transform.position.y);
 
     }
-
 }
