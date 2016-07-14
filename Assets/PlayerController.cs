@@ -24,17 +24,6 @@ public class PlayerController : Entity
 
 
 
-    // Use this for initialization
-    void Start()
-    {
-        // set some deafault values;
-        if (numVeriticalRayCasts < 2)
-            numVeriticalRayCasts = 2;
-        if (numHorizontalRayCasts < 2)
-            numHorizontalRayCasts = 2;
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -61,8 +50,8 @@ public class PlayerController : Entity
             grapple.enabled = true;
             grapple.shoot = true;
             direction = direction.normalized;
-            Debug.Log(direction);
-            grapple.speed = direction * 5;
+            //Debug.Log(direction);
+            grapple.speed = direction * grapple.moveForce + speed /3;
             grapple.acceleration = Vector2.zero;
         }
         else
@@ -73,7 +62,7 @@ public class PlayerController : Entity
 
     protected override void EntityInput()
     {
-        acceleration.x = horizontalInput;
+        acceleration.x = horizontalInput * moveForce;
 
 
         if (needToJump && grounded)

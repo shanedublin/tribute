@@ -37,6 +37,7 @@ public class Grapple : Projectile
         {
             transform.position = target;
             shoot = false;
+            grounded = false;
         }
         base.FixedUpdate();
     }
