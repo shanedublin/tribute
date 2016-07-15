@@ -33,7 +33,8 @@ namespace Raycasting
         public Vector2 speed;
         public Vector2 acceleration;
         public bool grounded;
-        public bool touchingWall;
+        public bool touchingLeftWall;
+        public bool touchingRightWall;
 
         public Transform bottomLeftCorner;
         public Transform bottomRightCorner;
@@ -79,6 +80,7 @@ namespace Raycasting
                 case Direction.Right:
                     newXPos = xPos - playerXOffset - wallXOffset;
                     speed.x = 0;
+                    touchingRightWall = true;
                     break;
                 case Direction.Down:
                     newYPos = yPos + wallYOffset + playerYOffset;
@@ -88,6 +90,7 @@ namespace Raycasting
                 case Direction.Left:
                     newXPos = xPos + playerXOffset + wallXOffset;
                     speed.x = 0;
+                    touchingLeftWall= true;
                     break;
                 default:
                     break;
@@ -100,10 +103,12 @@ namespace Raycasting
         {
             if (speed.x > 0)
             {
+                touchingLeftWall = false;
                 Raycast(Direction.Right);
             }
             else if (speed.x < 0)
             {
+                touchingRightWall = false;
                 Raycast(Direction.Left);
             }
 
@@ -196,6 +201,7 @@ namespace Raycasting
                                 snapToWall(dir, hit.collider.gameObject);
                                 return true;
                             }
+                            grounded = false;
                             break;
                         case Direction.Right:
                         case Direction.Left:
