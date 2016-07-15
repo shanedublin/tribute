@@ -1,27 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
-
+using System.Collections.Generic;
 public class PlayerController : Entity
 {
 
-    // public Rigidbody2D body;
-
-    
-
-    public bool wallBoots = true;
-    public bool teleBall = true;
-    public bool doubleJumpBoots = true;
-    
-
-
+    public bool wallBoots = false;
+    public bool teleBall = false;
+    public bool doubleJumpBoots = false;
     public float floatHeight;
     public float liftForce;
+
+    internal void Death()
+    {
+        wallBoots = false;
+        teleBall = false;
+        doubleJumpBoots = false;
+    }
+
     public float damping;
 
     public bool needToJump;
     public bool doubleJump;
-    public bool jumped;
 
     public Grapple grapple;
 
@@ -30,13 +30,6 @@ public class PlayerController : Entity
 
     public float jumpForce = 5f;
 
-    float jumpRoot = Mathf.Sqrt(2);
-
-    public void Start()
-    {
-        jumpRoot = Mathf.Sqrt(jumpForce / 2);
-
-    }
 
 
     // Update is called once per frame
@@ -95,46 +88,55 @@ public class PlayerController : Entity
     protected override void EntityInput()
     {
         acceleration.x = horizontalInput * moveForce;
-
-
+        
         if (grounded)
             doubleJump = true;
 
         if (needToJump)
         {
-            if (grounded)
-            {                
-                speed.y = jumpForce;
-                touchingLeftWall = false;
-                touchingRightWall = false;
-            }
-            else if (wallBoots)
-            {            
-                if (touchingLeftWall)
-                {
-                    speed.x = jumpForce  ;
-                    speed.y = jumpForce / 1.9f ;
-                    touchingLeftWall = false;
-                }
-                else if (touchingRightWall)
-                {
-                    speed.x = -jumpForce;
-                    speed.y = jumpForce / 1.9f ;
-                    touchingRightWall = false;
-
-                }
-            }else if (doubleJumpBoots)
-            {
-                if (doubleJump)
-                {
-                    speed.y = jumpForce / 1.5f;
-                    doubleJump = false;
-                }
-            }
+            Jump();            
             needToJump = false;
         }
 
 
+
+    }
+    protected void Jump()
+    {
+        if (grounded)
+        {
+            speed.y = jumpForce;
+            touchingLeftWall = false;
+            touchingRightWall = false;
+            return;
+        }
+        if (wallBoots)
+        {
+            if (touchingLeftWall)
+            {
+                speed.x = jumpForce;
+                speed.y = jumpForce / 1.9f;
+                touchingLeftWall = false;
+                return;
+            }
+            else if (touchingRightWall)
+            {
+                speed.x = -jumpForce;
+                speed.y = jumpForce / 1.9f;
+                touchingRightWall = false;
+                return;
+
+            }
+        }
+        if (doubleJumpBoots)
+        {
+            if (doubleJump)
+            {
+                speed.y = jumpForce / 1.5f;
+                doubleJump = false;
+                return;
+            }
+        }
 
     }
 
