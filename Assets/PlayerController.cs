@@ -10,6 +10,7 @@ public class PlayerController : Entity
     public bool doubleJumpBoots = false;
     public float floatHeight;
     public float liftForce;
+    public ParticleSystem ps;
 
     internal void Death()
     {
@@ -108,6 +109,8 @@ public class PlayerController : Entity
             speed.y = jumpForce;
             touchingLeftWall = false;
             touchingRightWall = false;
+            ps.Emit(10);
+            ps.transform.localEulerAngles = new Vector3(90, 90, 90);
             return;
         }
         if (wallBoots)
@@ -116,7 +119,10 @@ public class PlayerController : Entity
             {
                 speed.x = jumpForce;
                 speed.y = jumpForce / 1.9f;
+
                 touchingLeftWall = false;
+                ps.Emit(10);
+                ps.transform.localEulerAngles = new Vector3(180, 90, 90);
                 return;
             }
             else if (touchingRightWall)
@@ -124,6 +130,8 @@ public class PlayerController : Entity
                 speed.x = -jumpForce;
                 speed.y = jumpForce / 1.9f;
                 touchingRightWall = false;
+                ps.Emit(10);
+                ps.transform.localEulerAngles = new Vector3(0, 90, 90);
                 return;
 
             }
@@ -134,6 +142,8 @@ public class PlayerController : Entity
             {
                 speed.y = jumpForce / 1.5f;
                 doubleJump = false;
+                ps.Emit(20);
+                ps.transform.localEulerAngles = new Vector3(90, 90, 90);
                 return;
             }
         }

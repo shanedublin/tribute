@@ -36,6 +36,8 @@ public abstract class Entity : Raycaster
         EntityInput();
         
         speed.x *= groundDrag;
+        if (Mathf.Abs(speed.x) <= .01f)
+            speed.x = 0;
         base.FixedUpdate();
        
     }
