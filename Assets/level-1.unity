@@ -2614,11 +2614,15 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 1832783958}
+    - target: {fileID: 175870, guid: 7b2f96fceb42d6545862946351a6fe48, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 184958, guid: 7b2f96fceb42d6545862946351a6fe48, type: 2}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 175870, guid: 7b2f96fceb42d6545862946351a6fe48, type: 2}
+    - target: {fileID: 153568, guid: 7b2f96fceb42d6545862946351a6fe48, type: 2}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
