@@ -4,7 +4,7 @@ using System.Collections;
 public class PowerUp : MonoBehaviour {
 
     public enum Power{
-        WallBoots, TeleBall, DoubleJump
+        WallBoots, TeleBall, DoubleJump, Booger
     }
     public Power power;
     // Use this for initialization
@@ -15,6 +15,10 @@ public class PowerUp : MonoBehaviour {
     void Start()
     {
         levelManager = FindObjectOfType<LevelManager>();
+        if(Power.Booger == power)
+        {
+            levelManager.totalBoogers++;
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -32,6 +36,9 @@ public class PowerUp : MonoBehaviour {
                     break;
                 case Power.DoubleJump:
                     controller.doubleJumpBoots = true;
+                    break;
+                case Power.Booger:
+                    levelManager.getBooger(1);
                     break;
                 default:
                     break;
