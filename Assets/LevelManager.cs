@@ -62,6 +62,7 @@ public class LevelManager : MonoBehaviour
     {
         boogers += numBoogers;
         boogerText.text = boogers + "/" + totalBoogers;
+        InfoBlurbManager.instance.CreateInfoBlurb(player.transform.position, "+1", Color.white);
 
     }
 

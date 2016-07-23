@@ -30,12 +30,15 @@ public class PowerUp : MonoBehaviour {
             {
                 case Power.WallBoots:
                     controller.wallBoots = true;
+                    InfoBlurbManager.instance.CreateInfoBlurb(transform.position, "Wall Boots", Color.white);
                     break;
                 case Power.TeleBall:
                     controller.teleBall = true;
+                    InfoBlurbManager.instance.CreateInfoBlurb(transform.position, "Teleport Ball", Color.white);
                     break;
                 case Power.DoubleJump:
                     controller.doubleJumpBoots = true;
+                    InfoBlurbManager.instance.CreateInfoBlurb(transform.position, "Double Jump", Color.white);
                     break;
                 case Power.Booger:
                     levelManager.getBooger(1);
