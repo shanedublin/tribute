@@ -14,7 +14,7 @@ public class LevelManager : MonoBehaviour
     public bool levelComplete;
     public int boogers = 0;
     public int totalBoogers = 0;
-
+    public Transform spawnPoint;
     public Text timerText;
     public Text deathText;
     public Text victoryText;
@@ -36,6 +36,7 @@ public class LevelManager : MonoBehaviour
         {
             throw new Exception("Level Name Not Set");
         }
+        player.transform.position = spawnPoint.position;
     }
 
     public void PlayerDeath()
@@ -45,7 +46,7 @@ public class LevelManager : MonoBehaviour
 
         InfoBlurbManager.instance.CreateInfoBlurb(player.transform.position, "Dead!", Color.red);
         deathText.text = deathCount + "";
-        player.transform.position = Globals.instance.spawnPoint.position;
+        player.transform.position = spawnPoint.position;
         player.Death();
         resetLevel();
 
@@ -127,7 +128,7 @@ public class LevelManager : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 
-                SceneManager.LoadScene("main");
+                SceneManager.LoadScene(0);
             }
             return;
         }
@@ -140,7 +141,9 @@ public class LevelManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene("main");
+            Debug.Log("Escape pressed");
+            //SceneManager.LoadScene(0);
+            SceneManager.LoadScene(0, LoadSceneMode.Single);
         }
     }
 

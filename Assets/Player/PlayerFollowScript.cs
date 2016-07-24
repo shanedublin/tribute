@@ -6,8 +6,8 @@ public class PlayerFollowScript : MonoBehaviour
 
     public Transform player;
 
-    public float xDelta;
-    public float yDelta;
+    public float xDelta = 2;
+    public float yDelta = 2;
 
     // Use this for initialization
     void Start()

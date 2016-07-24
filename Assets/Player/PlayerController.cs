@@ -41,7 +41,7 @@ public class PlayerController : Entity
 
         if (Input.GetButtonDown("Jump"))
         {
-            Debug.Log("Haters gonna hate");
+           // Debug.Log("Haters gonna hate");
             needToJump = true;
         }
         Grapple();
