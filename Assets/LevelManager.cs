@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class LevelManager : MonoBehaviour
 {
@@ -24,14 +25,25 @@ public class LevelManager : MonoBehaviour
     public Text msg;
     float levelTime = 0;
 
+    public string levelName;
+
     public PlayerController player;
     List<GameObject> disabledGameObjects = new List<GameObject>();
 
+    public void Awake()
+    {
+        if(levelName == null || levelName.Length < 1)
+        {
+            throw new Exception("Level Name Not Set");
+        }
+    }
+
     public void PlayerDeath()
     {
-        if(!levelComplete)        // if the level is complete dont add to the death
+        if (!levelComplete)        // if the level is complete dont add to the death
             deathCount++;
-        
+
+        InfoBlurbManager.instance.CreateInfoBlurb(player.transform.position, "Dead!", Color.red);
         deathText.text = deathCount + "";
         player.transform.position = Globals.instance.spawnPoint.position;
         player.Death();
@@ -55,36 +67,49 @@ public class LevelManager : MonoBehaviour
             go.SetActive(true);
         });
         boogers = 0;
-        getBooger(0);
+        resetBoogers();
     }
 
     public void getBooger(int numBoogers)
     {
         boogers += numBoogers;
         boogerText.text = boogers + "/" + totalBoogers;
-        InfoBlurbManager.instance.CreateInfoBlurb(player.transform.position, "+1", Color.white);
+        InfoBlurbManager.instance.CreateInfoBlurb(player.transform.position, "+" + numBoogers, Color.white);
+
+    }
+    public void resetBoogers()
+    {
+        boogers = 0;
+        boogerText.text = boogers + "/" + totalBoogers;
 
     }
 
 
     public void LevelVictory()
     {
-        float savedTime = PlayerPrefs.GetFloat(SceneManager.GetActiveScene().name + "time");
+        float savedTime = PlayerPrefs.GetFloat(levelName + "time");
 
 
         if (savedTime == 0 || savedTime > levelTime)
         {
             timer2Text.text = "Time: " + timerText.text + " New Record!";
-            PlayerPrefs.SetFloat(SceneManager.GetActiveScene().name + "time", levelTime);
+            PlayerPrefs.SetFloat(levelName + "time", levelTime);
         }
         else
-            timer2Text.text = string.Format("Time: {0:F2} sec", savedTime);
-        int savedBooger = PlayerPrefs.GetInt(SceneManager.GetActiveScene().name + "booger");
-        if(savedBooger < boogers)
         {
-            PlayerPrefs.SetInt(SceneManager.GetActiveScene().name + "booger", boogers);
+            timer2Text.text = string.Format("Best Time: {0:F2} sec", savedTime);
         }
-        booger2Text.text = "Boogers: " + boogers + "/" + totalBoogers;
+        int savedBooger = PlayerPrefs.GetInt(levelName + "booger");
+        if (savedBooger > boogers)
+        {
+            PlayerPrefs.SetInt(levelName + "booger", boogers);
+            booger2Text.text = "Most Boogers: " + savedBooger + "/" + totalBoogers;
+        }
+        else
+        {
+            booger2Text.text = "Boogers: " + boogers + "/" + totalBoogers + " New Record! ";
+
+        }
 
         levelComplete = true;
         timer2Text.gameObject.SetActive(true);
@@ -101,18 +126,23 @@ public class LevelManager : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log("Need to load menu screen");
+                
                 SceneManager.LoadScene("main");
             }
             return;
         }
         else
         {
-        levelTime += Time.deltaTime;
-        timerText.text = string.Format("{0:F2} sec",levelTime );
+            levelTime += Time.deltaTime;
+            timerText.text = string.Format("{0:F2} sec", levelTime);
 
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("main");
         }
     }
 
-    
+
 }

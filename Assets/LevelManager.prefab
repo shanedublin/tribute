@@ -44,6 +44,7 @@ GameObject:
   - 4: {fileID: 486682}
   - 114: {fileID: 11485084}
   - 114: {fileID: 11477022}
+  - 114: {fileID: 11482206}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -117,7 +118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &153568
 GameObject:
   m_ObjectHideFlags: 1
@@ -134,7 +135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &154862
 GameObject:
   m_ObjectHideFlags: 1
@@ -151,7 +152,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &175870
 GameObject:
   m_ObjectHideFlags: 1
@@ -168,7 +169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &184958
 GameObject:
   m_ObjectHideFlags: 1
@@ -500,7 +501,20 @@ MonoBehaviour:
   boogerText: {fileID: 11424728}
   panel: {fileID: 184958}
   msg: {fileID: 11495588}
+  levelName: 
   player: {fileID: 0}
+--- !u!114 &11482206
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 120804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 044a0f7fa7819a541aa234c9d80aae48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoBlurb: {fileID: 122070, guid: ed42f65556aea084fa8f9ddaa68b8cab, type: 2}
 --- !u!114 &11485084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -733,7 +747,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 4, y: 174}
-  m_SizeDelta: {x: 300, y: 200}
+  m_SizeDelta: {x: 400, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22470730
 RectTransform:

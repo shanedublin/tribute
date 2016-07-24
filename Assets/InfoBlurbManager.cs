@@ -28,10 +28,10 @@ public class InfoBlurbManager : MonoBehaviour {
 
     public void CreateInfoBlurb(Vector3 pos, string msg, Color color)
     {
-        Debug.Log("Creating info blurb");
+       // Debug.Log("Creating info blurb");
         if (instance)
         {
-            Debug.Log("Creating info thisg");
+            //Debug.Log("Creating info thisg");
             InfoBlurb blurb =  ((GameObject) Instantiate(instance.infoBlurb, pos, Quaternion.identity)).GetComponent<InfoBlurb>() ;
             blurb.init(pos, msg, color);
             blurb.transform.SetParent(instance.transform);
