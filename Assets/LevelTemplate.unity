@@ -124,26 +124,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 184958, guid: 7b2f96fceb42d6545862946351a6fe48, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11477022, guid: 7b2f96fceb42d6545862946351a6fe48, type: 2}
-      propertyPath: levelName
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 11477022, guid: 7b2f96fceb42d6545862946351a6fe48, type: 2}
       propertyPath: player
       value: 
       objectReference: {fileID: 1499495663}
-    - target: {fileID: 459284, guid: 7b2f96fceb42d6545862946351a6fe48, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -6
-      objectReference: {fileID: 0}
-    - target: {fileID: 459284, guid: 7b2f96fceb42d6545862946351a6fe48, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7b2f96fceb42d6545862946351a6fe48, type: 2}
   m_IsPrefabParent: 0
@@ -184,7 +168,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 461434, guid: 50e422455717a5845993bed10d25d89f, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50e422455717a5845993bed10d25d89f, type: 2}
@@ -198,11 +182,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 483870, guid: fbb0df12c2b53e643a0457b1e4f8b3bf, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -6
+      value: -6.833
       objectReference: {fileID: 0}
     - target: {fileID: 483870, guid: fbb0df12c2b53e643a0457b1e4f8b3bf, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -5
+      value: -4.854
       objectReference: {fileID: 0}
     - target: {fileID: 483870, guid: fbb0df12c2b53e643a0457b1e4f8b3bf, type: 2}
       propertyPath: m_LocalPosition.z
@@ -268,7 +252,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 401706, guid: 597ddf999e716774794f3ee496dafdec, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 597ddf999e716774794f3ee496dafdec, type: 2}
@@ -358,7 +342,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 12
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
